@@ -124,7 +124,7 @@ class FormBuilderPhoneField extends StatefulWidget {
 
 class FormBuilderPhoneFieldState extends State<FormBuilderPhoneField> {
   bool _readOnly = false;
-  TextEditingController _effectiveController = TextEditingController();
+  TextEditingController _effectiveController;
   FormBuilderState _formState;
   final GlobalKey<FormFieldState> _fieldKey = GlobalKey<FormFieldState>();
   String _initialValue;
@@ -141,22 +141,17 @@ class FormBuilderPhoneFieldState extends State<FormBuilderPhoneField> {
 
   @override
   void initState() {
+    super.initState();
     _formState = FormBuilder.of(context);
     _formState?.registerFieldKey(widget.attribute, _fieldKey);
     _initialValue = widget.initialValue ??
-        (_formState.initialValue.containsKey(widget.attribute)
+        ((_formState?.initialValue?.containsKey(widget.attribute) ?? false)
             ? _formState.initialValue[widget.attribute]
             : null);
-    if (widget.controller != null) {
-      _effectiveController = widget.controller;
-    }
+    _effectiveController = widget.controller ?? TextEditingController();
     _selectedDialogCountry = CountryPickerUtils.getCountryByIsoCode(
         widget.defaultSelectedCountryIsoCode);
     _parsePhone();
-    _effectiveController.addListener(() {
-      _invokeChange(_fieldKey.currentState);
-    });
-    super.initState();
   }
 
   Future<void> _parsePhone() async {
@@ -165,20 +160,23 @@ class FormBuilderPhoneFieldState extends State<FormBuilderPhoneField> {
         var parseResult = await PhoneNumber().parse(_initialValue);
         print(parseResult);
         if (parseResult != null) {
-          _selectedDialogCountry = CountryPickerUtils.getCountryByPhoneCode(
-              parseResult['country_code']);
+          setState(() {
+            _selectedDialogCountry = CountryPickerUtils.getCountryByPhoneCode(
+                parseResult['country_code']);
+          });
           _effectiveController.text = parseResult['national_number'];
         }
       } catch (error) {
+        print(error);
         _effectiveController.text = _initialValue.replaceFirst('+', '');
       }
+      setState(() {});
     }
   }
 
   void _invokeChange(FormFieldState field) {
-    final newFullNumber = fullNumber;
-    field.didChange(newFullNumber);
-    widget.onChanged?.call(newFullNumber);
+    field.didChange(fullNumber);
+    widget.onChanged?.call(fullNumber);
   }
 
   @override
@@ -187,7 +185,7 @@ class FormBuilderPhoneFieldState extends State<FormBuilderPhoneField> {
 
     return FormField(
       key: _fieldKey,
-      initialValue: fullNumber,
+      initialValue: _initialValue,
       autovalidate: widget.autovalidate,
       validator: (val) =>
           FormBuilderValidators.validateValidators(val, widget.validators),
@@ -199,9 +197,7 @@ class FormBuilderPhoneFieldState extends State<FormBuilderPhoneField> {
         } else {
           _formState?.setAttributeValue(widget.attribute, val);
         }
-        if (widget.onSaved != null) {
-          widget.onSaved(transformed ?? val);
-        }
+        widget.onSaved?.call(transformed ?? val);
       },
       builder: (FormFieldState field) {
         return TextField(
@@ -216,6 +212,9 @@ class FormBuilderPhoneFieldState extends State<FormBuilderPhoneField> {
             prefix: _textFieldPrefix(field),
           ),
           // initialValue: "${_initialValue ?? ''}",
+          onChanged: (val) {
+            _invokeChange(field);
+          },
           maxLines: widget.maxLines,
           keyboardType: widget.keyboardType,
           obscureText: widget.obscureText,
