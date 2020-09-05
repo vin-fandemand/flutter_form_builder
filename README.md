@@ -2,8 +2,16 @@
 
 This package helps in creation of Flutter Forms by providing the syntactic sugar for creating a Form Widget and reduce the boilerplate needed to build a form, validate fields, react to changes, and collect the value of the Form.
 
+[![Youtube Video Tutorial](https://imgur.com/AWzRq5Hl.png)](https://www.youtube.com/watch?v=7FBELQq808M)
+
+[Check out the video tutorial from SyntacOps on Youtube](https://www.youtube.com/watch?v=7FBELQq808M)
+
 ## Simple Usage
 To use this plugin, add `flutter_form_builder` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+
+  - For Flutter 1.17.x, use version 3.12.x
+  - For Flutter 1.20.x, use version 3.13.x
+  - For Flutter channel > stable (beta, dev, master), use version 3.14.0-alpha.x
 
 ### Example
 ```dart
@@ -192,7 +200,8 @@ Column(
 ## Input widgets
 The currently supported fields include:
 * `FormBuilderCheckbox` - Single Checkbox field
-* `FormBuilderCheckboxList` - List of Checkboxes for multiple selection
+* ~~`FormBuilderCheckboxList`~~ - List of Checkboxes for multiple selection with options listed vertically.
+* `FormBuilderCheckboxGroup` - List of Checkboxes for multiple selection. Unlike in `FormBuilderCheckboxList`, options can either be shown vertically or horizontally.
 * `FormBuilderChipsInput` - Takes a list of `Chip`s as input and suggests more options on typing
 * `FormBuilderChoiceChip` - Creates a chip that acts like a radio button.
 * `FormBuilderColorPicker` - For `Color` input selection
@@ -203,8 +212,8 @@ The currently supported fields include:
 * `FormBuilderFilterChip` - Creates a chip that acts like a checkbox.
 * `FormBuilderImagePicker` - Picker a image from Gallery or Camera and stores it in a List of images, File or String. **Note**: This picker is available for iOS and Android.
 * `FormBuilderPhoneField` - International phone number input. 
-* `FormBuilderRadio` - Used to select one value from a list of Radio Widgets 
-* `FormBuilderRadioGroup` - Used to select one value from a list of Radio Widgets 
+* ~~`FormBuilderRadio`~~ - Used to select one value from a list of Radio Widgets listed vertically. 
+* `FormBuilderRadioGroup` - Used to select one value from a list of Radio Widgets. Unlike in `FormBuilderRadio`, options can either be shown vertically or horizontally.
 * `FormBuilderRangeSlider` - Used to select a range from a range of values
 * `FormBuilderRate` - For selection of a numerical value as a rating 
 * `FormBuilderSegmentedControl` - For selection of a value from the `CupertinoSegmentedControl` as an input

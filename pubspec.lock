@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.0"
+    version: "6.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.39.12"
+    version: "0.39.14"
   archive:
     dependency: transitive
     description:
@@ -49,7 +49,7 @@ packages:
       name: basic_utils
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.4"
+    version: "2.5.7"
   boolean_selector:
     dependency: transitive
     description:
@@ -71,6 +71,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.3"
+  cli_util:
+    dependency: transitive
+    description:
+      name: cli_util
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4"
   clock:
     dependency: transitive
     description:
@@ -152,7 +159,7 @@ packages:
       name: flutter_chips_input
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.3"
+    version: "1.9.3"
   flutter_colorpicker:
     dependency: "direct main"
     description:
@@ -192,7 +199,11 @@ packages:
       name: flutter_typeahead
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.8.6"
+=======
+    version: "1.8.8"
+>>>>>>> bc9b8cf0cc7163d59f14f5da7f2d2672481e8594
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -205,13 +216,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  group_radio_button:
-    dependency: "direct main"
-    description:
-      name: group_radio_button
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
   html:
     dependency: transitive
     description:
@@ -225,7 +229,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.1"
+    version: "0.12.2"
   http_multi_server:
     dependency: transitive
     description:
@@ -253,7 +257,11 @@ packages:
       name: image_picker
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.6.7+4"
+=======
+    version: "0.6.7+7"
+>>>>>>> bc9b8cf0cc7163d59f14f5da7f2d2672481e8594
   image_picker_for_web:
     dependency: "direct main"
     description:
@@ -379,7 +387,7 @@ packages:
       name: phone_number
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.2+3"
+    version: "0.6.2+4"
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -604,4 +612,8 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.9.0-14.0.dev <3.0.0"
+<<<<<<< HEAD
   flutter: ">=1.12.13+hotfix.6 <2.0.0"
+=======
+  flutter: ">=1.20.0 <2.0.0"
+>>>>>>> bc9b8cf0cc7163d59f14f5da7f2d2672481e8594
